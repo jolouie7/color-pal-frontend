@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage/HomePage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignupPage from "./components/SignupPage/SignupPage";
 import Navbar from "./components/Navbar/Navbar";
+// import AllPalettePage from "./components/AllPalettePage/AllPalettePage";
+import AllPalettePages from "./containers/AllPalettePages";
 
 const App = (props) => {
   const { dispatch } = props;
@@ -24,9 +26,10 @@ const App = (props) => {
         <div className={`alert ${alert.type}`}>{alert.message}</div>
       )} */}
       <Router history={history}>
-          <Navbar />
+        <Navbar />
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
+          <Route path="/palettes" component={AllPalettePages} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
         </Switch>
