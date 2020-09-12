@@ -45,7 +45,7 @@ const LoginPage = (props) => {
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            className="form-control"
+            // className="form-control"
             name="username"
             value={username}
             onChange={handleChange}
@@ -62,7 +62,7 @@ const LoginPage = (props) => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            className="form-control"
+            // className="form-control"
             name="password"
             value={password}
             onChange={handleChange}

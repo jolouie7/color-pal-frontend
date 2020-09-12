@@ -8,6 +8,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import HomePage from "./components/HomePage/HomePage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignupPage from "./components/SignupPage/SignupPage";
+import Navbar from "./components/Navbar/Navbar";
 
 const App = (props) => {
   const { dispatch } = props;
@@ -23,6 +24,7 @@ const App = (props) => {
         <div className={`alert ${alert.type}`}>{alert.message}</div>
       )} */}
       <Router history={history}>
+          <Navbar />
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />

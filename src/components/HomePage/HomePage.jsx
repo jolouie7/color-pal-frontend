@@ -21,14 +21,6 @@ const HomePage = (props) => {
       <h3>Users from secure api end point:</h3>
       {users.loading && <em>Loading users...</em>}
       {/* {users.error && <span className="text-danger">ERROR: {users.error}</span>} */}
-      {/* {users.items && (
-        <ul>
-          {users.items.map((user, index) => (
-            // <li key={user.id}>{user.firstName + " " + user.lastName}</li>
-            <li key={user.id}>{user.firstName + " " + user.lastName + " " + user.email}</li>
-          ))}
-        </ul>
-      )} */}
       <h1>Username: {user.username}</h1>
       <h1>Email: {user.email}</h1>
       <p>
@@ -50,4 +42,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(HomePage);
-//! does the link actually log users out?
