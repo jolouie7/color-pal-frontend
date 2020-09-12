@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+// import { connect } from "react-redux";
 
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
+// import * as userActions from "../actions/UserActions";
 
-const AllPalettePages = () => {
+const AllPalettePages = (props) => {
   const [palettes, setPalettes] = useState([]);
 
   useEffect(() => {
@@ -24,4 +26,4 @@ const AllPalettePages = () => {
   );
 }
 
-export default AllPalettePages
+export default AllPalettePages;

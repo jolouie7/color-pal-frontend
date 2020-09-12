@@ -1,26 +1,44 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import { connect } from "react-redux";
 
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import * as userActions from "../../actions/UserActions";
 
 const AllPalettePage = (props) => {
-  let {palette, code, name} = props.palette;
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const [username, setUsername] = useState([]);
+
+  // useEffect(() => {
+  //   setUsers(props.dispatch(userActions.getAll()));
+  // }, [])
+
+  let {code, name, user_id} = props.palette;
   name = name.charAt(0).toUpperCase() + name.slice(1);
+
+  // useEffect( () => {
+  //   setLoading(true)
+  //   setUsername(username)
+  //   setLoading(false)
+  // }, [])
+  const username = props.items.filter(user => user.id === user_id);
+
   return (
     <div>
       <Container>
         <Card style={{ width: "18rem" }}>
-          <Card.Img
-            variant="top"
-            style={{ background: `#${code}` }}
-            src="holder.js/100px180"
-          />
+          {/* <Card.Img
+          variant="top"
+          style={{ opacity: "0" }}
+          // src="holder.js/100px180"
+        /> */}
+          <Card style={{ height: "5rem", backgroundColor: `#${code}` }} />
           <Card.Body>
-            <Card.Title>{code}</Card.Title>
-            <Card.Text>
-              {name} by USERNAME
-            </Card.Text>
+            <Card.Title>#{code}</Card.Title>
+            {users.loading && <em>Loading users...</em>}
+            <Card.Text>{name} by {username}</Card.Text>
           </Card.Body>
         </Card>
       </Container>
@@ -28,4 +46,12 @@ const AllPalettePage = (props) => {
   );
 }
 
-export default AllPalettePage
+const mapStateToProps = (state) => {
+  const { users } = state;
+  const { items } = users;
+  return {
+    items,
+  };
+}
+
+export default connect(mapStateToProps)(AllPalettePage);
