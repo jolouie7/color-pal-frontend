@@ -23,7 +23,7 @@ const AllPalettePage = (props) => {
   //   setUsername(username)
   //   setLoading(false)
   // }, [])
-  const username = props.items.filter(user => user.id === user_id);
+  // const username = props.items.filter(user => user.id === user_id);
 
   return (
     <div>
@@ -38,7 +38,8 @@ const AllPalettePage = (props) => {
           <Card.Body>
             <Card.Title>#{code}</Card.Title>
             {users.loading && <em>Loading users...</em>}
-            <Card.Text>{name} by {username}</Card.Text>
+            {/* //! Line underneth doesn't work */}
+            {/* <Card.Text>{name} by {Object.keys(props.items).length !== 0 ? props.items.filter(user => user.id === user_id) : null}</Card.Text> */}
           </Card.Body>
         </Card>
       </Container>
@@ -55,3 +56,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(AllPalettePage);
+
+// ! Fix line 42 so that i can get the username of the user who created the palette card
