@@ -10,6 +10,7 @@ const HomePage = (props) => {
   }, [])
 
   const handleClick = () => {
+    // debugger
     props.dispatch(userActions.logout());
   }
 

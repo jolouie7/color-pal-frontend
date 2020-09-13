@@ -66,6 +66,7 @@ export const signup = (username, email, password, password_confirmation) => {
 };
 
 export const logout = () => {
+  // debugger;
   userService.logout();
   return { type: userConstants.LOGOUT };
 }

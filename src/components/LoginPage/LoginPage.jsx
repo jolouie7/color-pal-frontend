@@ -12,7 +12,7 @@ const LoginPage = (props) => {
   });
 
   // reset login status
-  // this.props.dispatch(userActions.logout());
+  // props.dispatch(userActions.logout());
 
   const handleChange = (e) => {
     const { name, value } = e.target;
