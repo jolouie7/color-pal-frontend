@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
-import * as userActions from "../actions/UserActions";
+// import * as userActions from "../actions/UserActions";
 
 const AllPalettePages = (props) => {
   const [palettes, setPalettes] = useState([]);
@@ -28,8 +28,8 @@ const AllPalettePages = (props) => {
         {Object.keys(props.users).length !== 0 ? (
           <div>
             <Row xl={4} md={2} sm={2} xs={1}>
-              {palettes.map((pal) => (
-                <Col>
+              {palettes.map((pal, index) => (
+                <Col key={index}>
                   <AllPalettePage palette={pal} users={props.users} />
                 </Col>
               ))}
@@ -43,9 +43,7 @@ const AllPalettePages = (props) => {
 
 const mapStateToProps = (state) => {
   const { users } = state;
-  // const { items } = users;
   return {
-    // items,
     users,
   };
 };

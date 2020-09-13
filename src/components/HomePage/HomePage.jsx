@@ -6,7 +6,7 @@ import * as userActions from "../../actions/UserActions";
 
 const HomePage = (props) => {
   useEffect(() => {
-    props.dispatch(userActions.getAll());
+    props.getAll();
   }, [])
 
   const handleClick = () => {
@@ -42,4 +42,12 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(HomePage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAll: () => {
+      dispatch(userActions.getAll());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

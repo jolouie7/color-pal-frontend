@@ -1,20 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import * as userActions from "../../actions/UserActions";
+// import * as userActions from "../../actions/UserActions";
 
 const AllPalettePage = (props) => {
-  // const [users, setUsers] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [username, setUsername] = useState([]);
-
-  // useEffect(() => {
-  //   setUsers(props.dispatch(userActions.getAll()));
-  // }, [])
-
   let {code, name, user_id} = props.palette;
   name = name.charAt(0).toUpperCase() + name.slice(1);
   const username = props.users.items.find(user => user.id === user_id).username
@@ -26,7 +18,11 @@ const AllPalettePage = (props) => {
           <Card style={{ height: "5rem", backgroundColor: `#${code}` }} />
           <Card.Body>
             <Card.Title>#{code}</Card.Title>
-            <Card.Text>{name} by {username}</Card.Text>
+            <Card.Text>
+              {name} by {username}
+            </Card.Text>
+            <Button variant="info">Edit</Button> {" "}
+            <Button variant="danger">Delete</Button>
           </Card.Body>
         </Card>
       </Container>

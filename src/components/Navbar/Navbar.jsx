@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ const NavbarComponent = (props) => {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Nav.Link href="/">Color-Pal</Nav.Link>
+        <Link to="/" style={{color: "white"}}>Color-Pal</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
