@@ -1,5 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
 import * as userActions from "../actions/UserActions";
@@ -15,33 +18,36 @@ const AllPalettePages = (props) => {
     }
 
     fetchMyAPI();
-  }, [])
+  }, []);
 
-  console.log(props)
+  console.log(props);
 
   return (
     <div>
-    {
-      Object.keys(props.users).length !== 0 ? (
-    <div>
-      {palettes.map((pal) => (
-        <AllPalettePage palette={pal} users={props.users}/>
-      ))}
-    </div>)
-    :
-    null
-    }
+      <Container>
+        {Object.keys(props.users).length !== 0 ? (
+          <div>
+            <Row xl={4} md={2} sm={2} xs={1}>
+              {palettes.map((pal) => (
+                <Col>
+                  <AllPalettePage palette={pal} users={props.users} />
+                </Col>
+              ))}
+            </Row>
+          </div>
+        ) : null}
+      </Container>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   const { users } = state;
   // const { items } = users;
   return {
     // items,
-    users
+    users,
   };
-}
+};
 
 export default connect(mapStateToProps)(AllPalettePages);
