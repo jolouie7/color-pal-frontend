@@ -15,6 +15,7 @@ const NavbarComponent = (props) => {
           <Nav className="mr-auto">
             <Nav.Link href="/palettes">All Palettes</Nav.Link>
             <Nav.Link href="#">My Palettes</Nav.Link>
+            <Nav.Link href="/create-palette">Create Palette</Nav.Link>
           </Nav>
           <Nav>
             {user ? (

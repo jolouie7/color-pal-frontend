@@ -17,29 +17,16 @@ const AllPalettePage = (props) => {
 
   let {code, name, user_id} = props.palette;
   name = name.charAt(0).toUpperCase() + name.slice(1);
-
-  // useEffect( () => {
-  //   setLoading(true)
-  //   setUsername(username)
-  //   setLoading(false)
-  // }, [])
-  // const username = props.items.filter(user => user.id === user_id);
   const username = props.users.items.find(user => user.id === user_id).username
 
   return (
     <div>
       <Container>
         <Card style={{ width: "18rem" }}>
-          {/* <Card.Img
-          variant="top"
-          style={{ opacity: "0" }}
-          // src="holder.js/100px180"
-        /> */}
           <Card style={{ height: "5rem", backgroundColor: `#${code}` }} />
           <Card.Body>
             <Card.Title>#{code}</Card.Title>
-            {/* <Card.Text>{name} by {Object.keys(props.items).length !== 0 ? props.items.filter(user => user.id === user_id) : null}</Card.Text> */}
-            <Card.Text>{username}</Card.Text>
+            <Card.Text>{name} by {username}</Card.Text>
           </Card.Body>
         </Card>
       </Container>
@@ -56,5 +43,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(AllPalettePage);
-
-// ! Fix line 42 so that i can get the username of the user who created the palette card

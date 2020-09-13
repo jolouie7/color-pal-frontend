@@ -4,14 +4,11 @@ import * as alertActions from "./AlertActions";
 import {history} from "../helpers/history";
 
 export const login = (username, password) => {
-  console.log("username:", username)
-  console.log("password:", password)
   return (dispatch) => {
     dispatch(request({ username }));
 
     userService.login(username, password).then(
       (user) => {
-        console.log(user)
         dispatch(success(user));
         history.push("/");
         window.location.reload(true);

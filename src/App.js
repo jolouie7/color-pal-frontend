@@ -11,6 +11,7 @@ import SignupPage from "./components/SignupPage/SignupPage";
 import Navbar from "./components/Navbar/Navbar";
 // import AllPalettePage from "./components/AllPalettePage/AllPalettePage";
 import AllPalettePages from "./containers/AllPalettePages";
+import CreatePalettePage from "./components/CreatePalettePage/CreatePalettePage";
 
 const App = (props) => {
   const { dispatch } = props;
@@ -30,6 +31,7 @@ const App = (props) => {
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
           <PrivateRoute path="/palettes" component={AllPalettePages} />
+          <PrivateRoute path="/create-palette" component={CreatePalettePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
         </Switch>
