@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
-// import * as userActions from "../actions/UserActions";
+import * as userActions from "../actions/UserActions";
 
 const AllPalettePages = (props) => {
   const [palettes, setPalettes] = useState([]);
@@ -17,13 +17,31 @@ const AllPalettePages = (props) => {
     fetchMyAPI();
   }, [])
 
+  console.log(props)
+
   return (
     <div>
+    {
+      Object.keys(props.users).length !== 0 ? (
+    <div>
       {palettes.map((pal) => (
-        <AllPalettePage palette={pal}/>
+        <AllPalettePage palette={pal} users={props.users}/>
       ))}
+    </div>)
+    :
+    null
+    }
     </div>
   );
 }
 
-export default AllPalettePages;
+const mapStateToProps = (state) => {
+  const { users } = state;
+  // const { items } = users;
+  return {
+    // items,
+    users
+  };
+}
+
+export default connect(mapStateToProps)(AllPalettePages);

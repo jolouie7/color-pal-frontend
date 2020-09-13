@@ -7,8 +7,8 @@ import Button from "react-bootstrap/Button";
 import * as userActions from "../../actions/UserActions";
 
 const AllPalettePage = (props) => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [users, setUsers] = useState([]);
+  // const [loading, setLoading] = useState(false);
   // const [username, setUsername] = useState([]);
 
   // useEffect(() => {
@@ -24,6 +24,7 @@ const AllPalettePage = (props) => {
   //   setLoading(false)
   // }, [])
   // const username = props.items.filter(user => user.id === user_id);
+  const username = props.users.items.find(user => user.id === user_id).username
 
   return (
     <div>
@@ -37,9 +38,8 @@ const AllPalettePage = (props) => {
           <Card style={{ height: "5rem", backgroundColor: `#${code}` }} />
           <Card.Body>
             <Card.Title>#{code}</Card.Title>
-            {users.loading && <em>Loading users...</em>}
-            {/* //! Line underneth doesn't work */}
             {/* <Card.Text>{name} by {Object.keys(props.items).length !== 0 ? props.items.filter(user => user.id === user_id) : null}</Card.Text> */}
+            <Card.Text>{username}</Card.Text>
           </Card.Body>
         </Card>
       </Container>
