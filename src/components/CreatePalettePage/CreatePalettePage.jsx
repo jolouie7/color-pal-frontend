@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { connect } from "react-redux";
 
 import * as paletteActions from "../../actions/PaletteActions";
 
@@ -22,9 +23,10 @@ const CreatePalettePage = (props) => {
 
     setPalette({ ...palette, submitted: true });
     const { hexcode, colorName } = palette;
-    const { dispatch } = props;
-    if (hexcode && colorName) {
-      dispatch(paletteActions.paletteCreate(hexcode, colorName));
+    const { dispatch, user } = props;
+    console.log("createUser: ", user)
+    if (hexcode && colorName && user) {
+      dispatch(props.paletteCreate(hexcode, colorName, user));
     }
   };
 
@@ -60,4 +62,21 @@ const CreatePalettePage = (props) => {
   );
 };
 
-export default CreatePalettePage;
+const mapStateToProps = (state) => {
+  const { authentication } = state;
+  const { user } = authentication;
+  return {
+    user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    paletteCreate: (hexcode, colorName, user) => {
+      dispatch(paletteActions.paletteCreate(hexcode, colorName, user));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePalettePage);
+// export default CreatePalettePage;

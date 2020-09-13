@@ -1,20 +1,22 @@
 // import { authHeader } from "../helpers/Auth-Header";
 
-export const paletteCreate = (hexcode, colorName) => {
+export const paletteCreate = (hexcode, colorName, user) => {
+  const code = hexcode;
+  const name = colorName;
+  console.log("user:", user)
+  const user_id = user.pk;
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      hexcode,
-      colorName,
+      code,
+      name,
+      user_id,
     }),
   };
 
   //! Change this to the API location
-  return fetch(
-    `http://127.0.0.1:8000/api/create/`,
-    requestOptions
-  )
+  return fetch(`http://127.0.0.1:8000/api/palette-create/`, requestOptions)
     .then(handleResponse)
     .then((palette) => {
       console.log(palette);
