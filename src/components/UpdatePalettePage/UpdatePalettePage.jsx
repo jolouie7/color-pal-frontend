@@ -38,11 +38,6 @@ const UpdatePalettePage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // setPalette({
-    //   ...palette,
-    //   user_id: props.location.state.data.user_id,
-    //   palette_id: props.location.state.data.id,
-    // });
     setPalette({ ...palette, submitted: true });
     const { code, name, user_id, palette_id } = palette;
     const { dispatch } = props;
@@ -53,11 +48,6 @@ const UpdatePalettePage = (props) => {
 
   return (
     <div>
-      {console.log(props.location.state.data)}
-      {/* paste in a bootstrap form here */}
-      {/* fill the form with state data to be edited */}
-      {/* once the user clicks update button, we will dispatch our action and hit our endpoint */}
-      {/* we use also update the redux store when we dispatch? or do we re-fetch? */}
       <Container>
         <Form name="form" onSubmit={handleSubmit}>
           <Form.Group>

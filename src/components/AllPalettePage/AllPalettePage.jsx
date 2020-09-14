@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import * as paletteActions from "../../actions/PaletteActions";
+import PaletteDeleteModal from "../modals/PaletteDeleteModal";
 
 const AllPalettePage = (props) => {
   let {code, name, user_id, id} = props.palette;
@@ -17,12 +18,16 @@ const AllPalettePage = (props) => {
     user_id,
     id
   })
+  const [show, setShow] = useState(false)
+
+  const openModal = () => setShow(true);
+  const closeModal = () => setShow(false);
 
   name = name.charAt(0).toUpperCase() + name.slice(1);
   const username = props.users.items.find(user => user.id === user_id).username
 
   
-  const handleClick = () => {
+  const handleClickInfo = () => {
     // console.log("card: ", props.palette.id)
     // console.log(id)
     setData({...data, redirect: true})
@@ -53,11 +58,14 @@ const AllPalettePage = (props) => {
                 {name} by {username}
               </Card.Text>
               {/* <Link to="/update-palette"> */}
-                <Button variant="info" onClick={handleClick}>
-                  Edit
-                </Button>{" "}
+              <Button variant="info" onClick={handleClickInfo}>
+                Edit
+              </Button>{" "}
               {/* </Link> */}
-              <Button variant="danger">Delete</Button>
+              {/* <Button variant="danger" onClick={handleClickDelete}> */}
+                <PaletteDeleteModal closeModal={closeModal} show={show} palette_id={data.id}/>
+                  {/* Delete */}
+              {/* </Button> */}
             </Card.Body>
           </Card>
         </Container>

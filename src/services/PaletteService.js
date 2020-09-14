@@ -49,6 +49,23 @@ export const paletteUpdate = (code, name, user_id, palette_id) => {
     });
 };
 
+export const paletteDelete = (palette_id) => {
+  const requestOptions = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  };
+
+  //! Change this to the API location
+  return fetch(
+    `http://127.0.0.1:8000/api/palette-delete/${palette_id}/`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((palette) => {
+      console.log(palette);
+    });
+};
+
 // checks if the http response from the api is 401 Unauthorized and automatically logs the user out.
 const handleResponse = (response) => {
 

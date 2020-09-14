@@ -59,14 +59,14 @@ export const paletteUpdate = (code, name, user_id, palette_id) => {
   }
 };
 
-export const paletteDelete = (hexcode, colorName, user) => {
+export const paletteDelete = (palette_id) => {
   return (dispatch) => {
-    dispatch(request({ hexcode }));
+    dispatch(request({ palette_id }));
 
-    paletteService.paletteCreate(hexcode, colorName, user).then(
+    paletteService.paletteDelete(palette_id).then(
       (palette) => {
         dispatch(success(palette));
-        history.push("/palettes");
+        history.push("/palettes"); //should push to my palettes
         window.location.reload(true);
       },
       (error) => {
