@@ -3,25 +3,33 @@ import { connect } from "react-redux";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from 'react-router-dom';
+import Button from "react-bootstrap/Button";
 
 const NavbarComponent = (props) => {
   const {user} = props;
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Link to="/" style={{color: "white"}}>Color-Pal</Link>
+        <Link to="/">
+          <Button variant="dark">Color-Pal</Button>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/palettes">All Palettes</Nav.Link>
-            <Nav.Link href="#">My Palettes</Nav.Link>
-            <Nav.Link href="/create-palette">Create Palette</Nav.Link>
+            <Link to="/">
+              Home
+            </Link>
+            <Link to="/palettes">
+              <Button variant="dark">All Palettes</Button>
+            </Link>
+            <Link to="#"><Button variant="dark">My Palettes</Button></Link>
+            <Link to="/create-palette"><Button variant="dark">Create Palette</Button></Link>
           </Nav>
           <Nav>
             {user ? (
-              <Nav.Link>Hello {user.username}!</Nav.Link>
+              <Link><Button variant="dark">Hello {user.username}!</Button></Link>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Link to="/login"><Button variant="dark">Login</Button></Link>
             )}
           </Nav>
         </Navbar.Collapse>

@@ -3,8 +3,8 @@
 export const paletteCreate = (hexcode, colorName, user) => {
   const code = hexcode;
   const name = colorName;
-  console.log("user:", user)
   const user_id = user.pk;
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -21,6 +21,30 @@ export const paletteCreate = (hexcode, colorName, user) => {
     .then((palette) => {
       console.log(palette);
       window.alert("Successfuly Created a Palette!");
+      return palette;
+    });
+};
+
+export const paletteUpdate = (code, name, user_id, palette_id) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      code,
+      name,
+      user_id,
+    }),
+  };
+
+  //! Change this to the API location
+  return fetch(
+    `http://127.0.0.1:8000/api/palette-update/${palette_id}/`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((palette) => {
+      console.log(palette);
+      window.alert("Successfuly Update Palette!");
       return palette;
     });
 };

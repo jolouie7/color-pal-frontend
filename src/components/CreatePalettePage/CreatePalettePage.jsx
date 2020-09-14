@@ -34,7 +34,7 @@ const CreatePalettePage = (props) => {
     <div>
       <Container>
         <Form name="form" onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Hex Code</Form.Label>
             <Form.Control
               type="text"
