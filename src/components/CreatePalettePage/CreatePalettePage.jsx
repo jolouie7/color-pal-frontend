@@ -41,6 +41,7 @@ const CreatePalettePage = (props) => {
               placeholder="Enter Hex Code"
               name="hexcode"
               onChange={handleChange}
+              pattern="\d{6}"
             />
           </Form.Group>
 
@@ -51,6 +52,7 @@ const CreatePalettePage = (props) => {
               placeholder="Enter Color"
               name="colorName"
               onChange={handleChange}
+              pattern="[a-zA-Z]{2,}"
             />
           </Form.Group>
           <Button variant="primary" type="submit">

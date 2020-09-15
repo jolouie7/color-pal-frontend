@@ -17,19 +17,27 @@ const NavbarComponent = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/">
-              Home
+              <Button variant="dark">Home</Button>
             </Link>
             <Link to="/palettes">
               <Button variant="dark">All Palettes</Button>
             </Link>
-            <Link to="#"><Button variant="dark">My Palettes</Button></Link>
-            <Link to="/create-palette"><Button variant="dark">Create Palette</Button></Link>
+            <Link to="#">
+              <Button variant="dark">My Palettes</Button>
+            </Link>
+            <Link to="/create-palette">
+              <Button variant="dark">Create Palette</Button>
+            </Link>
           </Nav>
           <Nav>
             {user ? (
-              <Link><Button variant="dark">Hello {user.username}!</Button></Link>
+              <Link>
+                <Button variant="dark">Hello {user.username}!</Button>
+              </Link>
             ) : (
-              <Link to="/login"><Button variant="dark">Login</Button></Link>
+              <Link to="/login">
+                <Button variant="dark">Login</Button>
+              </Link>
             )}
           </Nav>
         </Navbar.Collapse>
