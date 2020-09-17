@@ -10,15 +10,15 @@ import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
 const AllPalettePages = (props) => {
   const [palettes, setPalettes] = useState([]);
 
-  useEffect(() => {
-    async function fetchMyAPI() {
-      let response = await fetch("http://127.0.0.1:8000/api/palette-list/");
-      response = await response.json();
-      setPalettes(response);
-    }
+  // useEffect(() => {
+  //   async function fetchMyAPI() {
+  //     let response = await fetch("http://127.0.0.1:8000/api/palette-list/");
+  //     response = await response.json();
+  //     setPalettes(response);
+  //   }
 
-    fetchMyAPI();
-  }, []);
+  //   fetchMyAPI();
+  // }, []);
 
   console.log(props);
 

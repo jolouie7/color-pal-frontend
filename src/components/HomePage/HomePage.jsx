@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import * as userActions from "../../actions/UserActions";
+import * as paletteActions from "../../actions/PaletteActions";
 
 const HomePage = (props) => {
   useEffect(() => {
-    props.getAll();
+    props.getAllUsers();
+    props.getPalettes();
   }, [])
 
   const handleClick = () => {
@@ -44,9 +46,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAll: () => {
+    getAllUsers: () => {
       dispatch(userActions.getAll());
     },
+    getPalettes: () => {
+      dispatch(paletteActions.getAll());
+    }
   };
 };
 

@@ -3,6 +3,30 @@ import * as paletteService from "../services/PaletteService";
 import * as alertActions from "./AlertActions";
 import { history } from "../helpers/history";
 
+export const getAll = () => {
+  return (dispatch) => {
+    dispatch(request());
+
+    paletteService.getAll().then(
+      (palettes) => dispatch(success(palettes)),
+      (error) => {
+        dispatch(failure(error));
+        dispatch(alertActions.error(error));
+      }
+    );
+  };
+
+  function request() {
+    return { type: paletteConstants.PALETTE_BEGIN };
+  }
+  function success(palettes) {
+    return { type: paletteConstants.PALETTE_SUCCESS, palettes };
+  }
+  function failure(error) {
+    return { type: paletteConstants.PALETTE_FAILURE, error };
+  }
+};
+
 export const paletteCreate = (hexcode, colorName, user) => {
   return (dispatch) => {
     dispatch(request({ hexcode }));

@@ -1,4 +1,16 @@
-// import { authHeader } from "../helpers/Auth-Header";
+import { authHeader } from "../helpers/Auth-Header";
+
+export const getAll = () => {
+  const requestOptions = {
+    method: "GET",
+    headers: authHeader(),
+  };
+
+  //! Change this to the API location
+  return fetch(`http://127.0.0.1:8000/api/palette-list/`, requestOptions).then(
+    handleResponse
+  );
+};
 
 export const paletteCreate = (hexcode, colorName, user) => {
   const code = hexcode;
