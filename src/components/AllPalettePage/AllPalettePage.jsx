@@ -1,7 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -10,27 +15,26 @@ import * as paletteActions from "../../actions/PaletteActions";
 import PaletteDeleteModal from "../modals/PaletteDeleteModal";
 
 const AllPalettePage = (props) => {
-  let {code, name, user_id, id} = props.palette;
+  console.log(props);
+  let { code, name, user_id, id } = props.palette;
   const [data, setData] = useState({
     redirect: false,
     code,
     name,
     user_id,
-    id
-  })
-  const [show, setShow] = useState(false)
+    id,
+  });
+  const [show, setShow] = useState(false);
 
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
   name = name.charAt(0).toUpperCase() + name.slice(1);
-  const username = props.users.items.find(user => user.id === user_id).username
+  const username = props.users.items.find((user) => user.id === user_id)
+    .username;
 
-  
   const handleClickInfo = () => {
-    // console.log("card: ", props.palette.id)
-    // console.log(id)
-    setData({...data, redirect: true})
+    setData({ ...data, redirect: true });
     // props.dispatch(paletteActions.paletteUpdate(code, name, user_id, id));
   };
 
@@ -46,7 +50,6 @@ const AllPalettePage = (props) => {
       />
     );
   } else {
-
     return (
       <div>
         <Container>
@@ -57,30 +60,39 @@ const AllPalettePage = (props) => {
               <Card.Text>
                 {name} by {username}
               </Card.Text>
-              {/* <Link to="/update-palette"> */}
-              <Button variant="info" onClick={handleClickInfo}>
-                Edit
-              </Button>{" "}
-              {/* </Link> */}
-              {/* <Button variant="danger" onClick={handleClickDelete}> */}
-                <PaletteDeleteModal closeModal={closeModal} show={show} palette_id={data.id}/>
-                  {/* Delete */}
-              {/* </Button> */}
+              {props.user.pk === data.user_id ? (
+                <div>
+                  <Button variant="info" onClick={handleClickInfo}>
+                    Edit
+                  </Button>{" "}
+                  <PaletteDeleteModal
+                    closeModal={closeModal}
+                    show={show}
+                    palette_id={data.id}
+                  />{" "}
+                  <Button variant="primary">{props.palette.likes} Likes</Button>
+                </div>
+              ) : (
+                <div>
+                  <Button variant="primary">{props.palette.likes} Likes</Button>
+                </div>
+              )}
             </Card.Body>
           </Card>
         </Container>
       </div>
     );
   }
-
-}
+};
 
 const mapStateToProps = (state) => {
-  const { users } = state;
+  const { users, authentication } = state;
   const { items } = users;
+  const { user } = authentication;
   return {
     items,
+    user,
   };
-}
+};
 
 export default connect(mapStateToProps)(AllPalettePage);
