@@ -22,7 +22,7 @@ const NavbarComponent = (props) => {
             <Link to="/palettes">
               <Button variant="dark">All Palettes</Button>
             </Link>
-            <Link to="#">
+            <Link to="/my-palettes">
               <Button variant="dark">My Palettes</Button>
             </Link>
             <Link to="/create-palette">
@@ -31,9 +31,7 @@ const NavbarComponent = (props) => {
           </Nav>
           <Nav>
             {user ? (
-              <Link>
-                <Button variant="dark">Hello {user.username}!</Button>
-              </Link>
+              <Button variant="dark">Hello {user.username}!</Button>
             ) : (
               <Link to="/login">
                 <Button variant="dark">Login</Button>

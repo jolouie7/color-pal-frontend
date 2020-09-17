@@ -7,14 +7,17 @@ import Col from "react-bootstrap/Col";
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
 
 const AllPalettePages = (props) => {
+  console.log(props.palettes.items);
+  console.log(props);
+  const myPalettes = props.palettes.items.filter(palette => palette.user_id === props.user.pk)
 
   return (
     <div>
       <Container>
-        {Object.keys(props.users).length !== 0 ? (
+        {Object.keys(myPalettes).length !== 0 ? (
           <div>
             <Row xl={4} md={2} sm={2} xs={1}>
-              {props.palettes.items.map((pal, index) => (
+              {myPalettes.map((pal, index) => (
                 <Col key={index}>
                   <AllPalettePage palette={pal} users={props.users} />
                 </Col>
@@ -28,10 +31,12 @@ const AllPalettePages = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { users, palettes } = state;
+  const { authentication, palettes, users } = state;
+  const {user} = authentication
   return {
+    user,
     users,
-    palettes
+    palettes,
   };
 };
 

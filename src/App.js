@@ -11,6 +11,7 @@ import SignupPage from "./components/SignupPage/SignupPage";
 import Navbar from "./components/Navbar/Navbar";
 // import AllPalettePage from "./components/AllPalettePage/AllPalettePage";
 import AllPalettePages from "./containers/AllPalettePages";
+import MyPalettePage from "./containers/MyPalettePage";
 import CreatePalettePage from "./components/CreatePalettePage/CreatePalettePage";
 import UpdatePalettePage from "./components/UpdatePalettePage/UpdatePalettePage";
 
@@ -32,6 +33,7 @@ const App = (props) => {
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
           <PrivateRoute path="/palettes" component={AllPalettePages} />
+          <PrivateRoute path="/my-palettes" component={MyPalettePage} />
           <PrivateRoute path="/create-palette" component={CreatePalettePage} />
           <PrivateRoute path="/update-palette" component={UpdatePalettePage} />
           <Route path="/login" component={LoginPage} />
