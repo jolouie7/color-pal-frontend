@@ -62,6 +62,7 @@ export const signup = (username, email, password, password_confirmation) => {
 };
 
 export const logout = () => {
+  console.log("hits the logout function in UserService")
   // remove user from local storage to log user out
   localStorage.removeItem("user");
   // remove token from local storage
@@ -88,7 +89,8 @@ const handleResponse = (response) => {
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
-        logout();
+        console.log("ISSUE IN UserService.js!!")
+        // logout();
         window.location.reload(true);
         // history.push("/");
       }

@@ -15,7 +15,6 @@ import * as paletteActions from "../../actions/PaletteActions";
 import PaletteDeleteModal from "../modals/PaletteDeleteModal";
 
 const AllPalettePage = (props) => {
-  console.log(props);
   let { code, name, user_id, id } = props.palette;
   const [data, setData] = useState({
     redirect: false,
@@ -35,7 +34,6 @@ const AllPalettePage = (props) => {
 
   const handleClickInfo = () => {
     setData({ ...data, redirect: true });
-    // props.dispatch(paletteActions.paletteUpdate(code, name, user_id, id));
   };
 
   if (data.redirect) {

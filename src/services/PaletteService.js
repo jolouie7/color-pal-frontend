@@ -86,6 +86,7 @@ const handleResponse = (response) => {
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
+        console.log("THE ISSUE IS HERE IN paletteService.js!!")
         window.alert("There was an error")
         window.location.reload(true);
         // history.push("/");

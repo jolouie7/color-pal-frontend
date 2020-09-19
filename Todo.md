@@ -9,8 +9,7 @@
 [x] do something with redux store items still being there after logout
 [x] store hashed password in db
 [] have alerts that notify the user if the email is already taken or the password correct, etc
-[] only be able to delete palettes in the my palettes page
- - You can only delete palettes that belong to you
+[x] You can only delete palettes that belong to you
 [] if you have admin powers you can delete any palette
 
 - Steps sign up a new user

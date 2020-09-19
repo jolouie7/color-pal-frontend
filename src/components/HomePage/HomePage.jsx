@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Container from "react-bootstrap/Container";
 
 import * as userActions from "../../actions/UserActions";
 import * as paletteActions from "../../actions/PaletteActions";
@@ -13,18 +14,20 @@ const HomePage = (props) => {
 
   const handleClick = () => {
     // debugger
-    props.dispatch(userActions.logout());
+    props.logoutUser();
   }
 
   const { user, users } = props;
   return (
     <div>
-      {/* <h1>Hi {user.firstName}!</h1> */}
+      <Container>
+        <div style={{ textAlign: "center" }}>Welcome</div>
+        <div style={{ textAlign: "center" }}>This is an website that lets you keep track of your colors you may have used in a pervious project</div>
+        <div style={{ textAlign: "center" }}>or find new colors created by others!!</div>
+      </Container>
       <p>You're logged in with React & JWT!!</p>
       <h3>Users from secure api end point:</h3>
       {users.loading && <em>Loading users...</em>}
-      {/* {users.error && <span className="text-danger">ERROR: {users.error}</span>} */}
-      <h1>Username: {user.username}</h1>
       <h1>Email: {user.email}</h1>
       <p>
         <Link to="/login" onClick={handleClick}>
@@ -51,6 +54,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getPalettes: () => {
       dispatch(paletteActions.getAll());
+    },
+    logoutUser: () => {
+      dispatch(userActions.logout())
     }
   };
 };

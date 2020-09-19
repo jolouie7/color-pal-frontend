@@ -7,8 +7,6 @@ import Col from "react-bootstrap/Col";
 import AllPalettePage from "../components/AllPalettePage/AllPalettePage";
 
 const AllPalettePages = (props) => {
-  console.log(props.palettes.items);
-  console.log(props);
   const myPalettes = props.palettes.items.filter(palette => palette.user_id === props.user.pk)
 
   return (

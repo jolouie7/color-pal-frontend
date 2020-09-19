@@ -7,6 +7,10 @@ import Button from "react-bootstrap/Button";
 
 const NavbarComponent = (props) => {
   const {user} = props;
+
+  const handleClick = () => {
+    debugger
+  }
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -17,7 +21,9 @@ const NavbarComponent = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/">
-              <Button variant="dark">Home</Button>
+              <Button variant="dark" onClick={handleClick}>
+                Home
+              </Button>
             </Link>
             <Link to="/palettes">
               <Button variant="dark">All Palettes</Button>
