@@ -5,12 +5,15 @@ import Nav from "react-bootstrap/Nav";
 import { Link } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 
+import * as userActions from "../../actions/UserActions";
+
 const NavbarComponent = (props) => {
   const {user} = props;
 
   const handleClick = () => {
-    debugger
-  }
+    props.logoutUser();
+  };
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -21,9 +24,7 @@ const NavbarComponent = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/">
-              <Button variant="dark" onClick={handleClick}>
-                Home
-              </Button>
+              <Button variant="dark">Home</Button>
             </Link>
             <Link to="/palettes">
               <Button variant="dark">All Palettes</Button>
@@ -37,11 +38,21 @@ const NavbarComponent = (props) => {
           </Nav>
           <Nav>
             {user ? (
-              <Button variant="dark">Hello {user.username}!</Button>
+              <Nav>
+                <Button variant="dark">Hello {user.username}!</Button>
+                <Button variant="dark" onClick={handleClick}>
+                  Logout
+                </Button>
+              </Nav>
             ) : (
-              <Link to="/login">
-                <Button variant="dark">Login</Button>
-              </Link>
+              <Nav>
+                <Link to="/login">
+                  <Button variant="dark">Login</Button>
+                </Link>
+                <Link to="/signup">
+                  <Button variant="dark">Sign Up</Button>
+                </Link>
+              </Nav>
             )}
           </Nav>
         </Navbar.Collapse>
@@ -58,4 +69,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(NavbarComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => {
+      dispatch(userActions.logout());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent);

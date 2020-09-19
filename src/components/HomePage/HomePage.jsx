@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 
 import * as userActions from "../../actions/UserActions";
 import * as paletteActions from "../../actions/PaletteActions";
+import Hero from "../../styles/hero"
 
 const HomePage = (props) => {
   useEffect(() => {
@@ -13,37 +14,33 @@ const HomePage = (props) => {
   }, [])
 
   const handleClick = () => {
-    // debugger
     props.logoutUser();
   }
 
-  const { user, users } = props;
+  // const { user, users } = props;
   return (
     <div>
-      <Container>
-        <div style={{ textAlign: "center" }}>Welcome</div>
-        <div style={{ textAlign: "center" }}>This is an website that lets you keep track of your colors you may have used in a pervious project</div>
-        <div style={{ textAlign: "center" }}>or find new colors created by others!!</div>
-      </Container>
-      <p>You're logged in with React & JWT!!</p>
+      <Hero />
+      {/* <p>You're logged in with React & JWT!!</p>
       <h3>Users from secure api end point:</h3>
       {users.loading && <em>Loading users...</em>}
-      <h1>Email: {user.email}</h1>
-      <p>
+      <h1>Email: {user.email}</h1> */}
+      {/* <p>
         <Link to="/login" onClick={handleClick}>
           Logout
         </Link>
-      </p>
+      </p> */}
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  const { users, authentication } = state;
+  const { users, authentication, palettes } = state;
   const { user } = authentication;
   return {
     user,
     users,
+    palettes
   };
 }
 

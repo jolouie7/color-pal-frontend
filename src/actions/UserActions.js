@@ -64,7 +64,8 @@ export const signup = (username, email, password, password_confirmation) => {
 
 export const logout = () => {
   // debugger;
-  userService.logout();
+  console.log("comment out userService.logout")
+  // userService.logout();
   return { type: userConstants.LOGOUT };
 }
 

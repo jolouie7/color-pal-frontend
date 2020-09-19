@@ -70,6 +70,7 @@ export const logout = () => {
 }
 
 export const getAll = () => {
+  // debugger
   const requestOptions = {
     method: "GET",
     headers: authHeader(),
@@ -90,9 +91,9 @@ const handleResponse = (response) => {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         console.log("ISSUE IN UserService.js!!")
-        // logout();
-        window.location.reload(true);
-        // history.push("/");
+        logout();
+        window.location.reload("/");
+        // window.history.push("/");
       }
 
       const error = (data && data.message) || response.statusText;

@@ -1,6 +1,8 @@
 import { authHeader } from "../helpers/Auth-Header";
 
 export const getAll = () => {
+  console.log("pal getAll")
+  // debugger
   const requestOptions = {
     method: "GET",
     headers: authHeader(),
@@ -87,9 +89,9 @@ const handleResponse = (response) => {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         console.log("THE ISSUE IS HERE IN paletteService.js!!")
-        window.alert("There was an error")
-        window.location.reload(true);
-        // history.push("/");
+        window.alert("There was an error in palette service")
+        window.location.reload("/");
+        // window.history.push("/");
       }
 
       const error = (data && data.message) || response.statusText;
